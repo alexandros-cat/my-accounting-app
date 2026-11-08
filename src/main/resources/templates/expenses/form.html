@@ -23,7 +23,7 @@
                         <span th:text="#{expense.field.title}">件名</span>
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" id="title" th:field="*{title}" maxlength="100" required>
+                    <input type="text" class="form-control" id="title" th:field="*{title}" maxlength="100" >
                     <div class="text-danger small" th:errors="*{title}"></div>
                 </div>
 
@@ -40,11 +40,11 @@
                             <div class="col-md-3">
                                 <label class="form-label" th:text="#{expense.field.expenseDate}">利用日</label>
                                 <input type="date" class="form-control"
-                                       th:field="*{details[__${stat.index}__].expenseDate}" required>
+                                       th:field="*{details[__${stat.index}__].expenseDate}" >
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" th:text="#{expense.field.category}">科目</label>
-                                <select class="form-select" th:field="*{details[__${stat.index}__].categoryId}" required>
+                                <select class="form-select" th:field="*{details[__${stat.index}__].categoryId}" >
                                     <option value="">選択してください</option>
                                     <option th:each="cat : ${categories}" th:value="${cat.categoryId}"
                                             th:text="${cat.categoryName}"></option>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-md-2">
                                 <label class="form-label" th:text="#{expense.field.taxRate}">税率</label>
-                                <select class="form-select" th:field="*{details[__${stat.index}__].taxId}" required>
+                                <select class="form-select" th:field="*{details[__${stat.index}__].taxId}" >
                                     <option value="">選択</option>
                                     <option th:each="tax : ${taxRates}" th:value="${tax.taxId}"
                                             th:text="${tax.description}"></option>
@@ -61,7 +61,7 @@
                             <div class="col-md-2">
                                 <label class="form-label" th:text="#{expense.field.amount}">金額</label>
                                 <input type="number" class="form-control" min="0" step="1"
-                                       th:field="*{details[__${stat.index}__].amount}" required>
+                                       th:field="*{details[__${stat.index}__].amount}" >
                             </div>
                             <div class="col-md-2 d-flex align-items-end">
                                 <button type="button" class="btn btn-outline-danger btn-sm remove-detail-row w-100">

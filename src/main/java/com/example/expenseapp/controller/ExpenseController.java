@@ -58,11 +58,11 @@ public class ExpenseController {
         return "expenses/list";
     }
 
-    @GetMapping("/new")
-    public String showCreateForm(Model model) {
-        prepareFormModel(model, expenseFormMapper.newForm());
-        return "expenses/form";
-    }
+        @GetMapping("/new")
+        public String showCreateForm(Model model) {
+            prepareFormModel(model, expenseFormMapper.newForm());
+            return "expenses/form";
+        }
 
     @PostMapping
     public String create(
@@ -72,7 +72,6 @@ public class ExpenseController {
             Model model,
             RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            prepareFormModel(model, form);
             return "expenses/form";
         }
 
