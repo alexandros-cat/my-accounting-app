@@ -28,7 +28,7 @@
             return;
         }
         const rows = container.querySelectorAll('.detail-row');
-        if (rows.length <= 1) {
+        if (rows.length < 0) {
             return;
         }
         button.closest('.detail-row').remove();
