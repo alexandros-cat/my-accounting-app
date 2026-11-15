@@ -113,6 +113,9 @@ public class ExpenseService {
         if (existing.getDetails().isEmpty()) {
             throw new IllegalArgumentException(messages.get("validation.details.required"));
         }
+        if (existing.getReceiptImages()==null||existing.getReceiptImages().isEmpty()) {
+            throw new IllegalArgumentException(messages.get("validation.receipt.required"));
+        }
 
         existing.setStatus(ExpenseStatus.PENDING);
         existing.setSubmittedAt(LocalDateTime.now());
