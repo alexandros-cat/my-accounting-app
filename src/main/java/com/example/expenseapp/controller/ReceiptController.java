@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.nio.file.Path;
 
@@ -28,6 +29,7 @@ public class ReceiptController {
     }
 
     @GetMapping("/expenses/{expenseId}/receipts/{imageId}")
+    @PreAuthorize("@expenseAuthorizationService.isOwner(#expenseId, authentication.principal)") 
     public ResponseEntity<Resource> showReceipt(
             @PathVariable Integer expenseId,
             @PathVariable Integer imageId) throws Exception {
