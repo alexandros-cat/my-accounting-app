@@ -29,7 +29,7 @@ public class ReceiptController {
     }
 
     @GetMapping("/expenses/{expenseId}/receipts/{imageId}")
-    @PreAuthorize("@expenseAuthorizationService.isOwner(#expenseId, authentication.principal)") 
+    @PreAuthorize("@expenseAuthorizationService.canView(#expenseId, authentication.principal)") 
     public ResponseEntity<Resource> showReceipt(
             @PathVariable Integer expenseId,
             @PathVariable Integer imageId) throws Exception {

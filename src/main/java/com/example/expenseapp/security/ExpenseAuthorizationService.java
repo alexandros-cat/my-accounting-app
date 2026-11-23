@@ -104,9 +104,9 @@ public class ExpenseAuthorizationService {
                         .filter(route -> loginUser.getUserId().equals(route.getApproverUserId()))
                         .anyMatch(route -> route.getStepNumber() != null
                                 && current.getStepNumber() != null
-                                && (upcomingOnly
-                                ? route.getStepNumber() > current.getStepNumber()
-                                : route.getStepNumber() == current.getStepNumber())))
+                                    && (upcomingOnly
+                                    ? route.getStepNumber() > current.getStepNumber()
+                                    : route.getStepNumber() <= current.getStepNumber())))
                 .orElse(false);
     }
 
@@ -116,4 +116,6 @@ public class ExpenseAuthorizationService {
         }
         return expenseMapper.findByIdAndUserId(expenseId, loginUser.getUserId()).isPresent();
     }
+
+    
 }
